@@ -4,8 +4,10 @@
   <script>
     const correctPassword = "bert";
     const userPassword = prompt("Enter password to view this site:");
-    if (userPassword != correctPassword) {
-      document.body.innerHTML = "<h1>Access denied</h1>";
+    if (userPassword !== correctPassword) {
+      document.write("<h1 style='text-align:center; margin-top:20%; font-family:sans-serif;'>Access denied</h1>");
+      // stop parsing more HTML/JS
+      window.stop(); // or: throw new Error("stop");
     }
   </script>
 
@@ -113,7 +115,7 @@
   <!-- Header with background image -->
   <header>
     <h1>Natasha & Noah</h1>
-    <p>We're getting married! September 6, 2026</p>
+    <p>We're getting married! August 30, 2026</p>
   </header>
 
   <!-- Navigation always hamburger -->

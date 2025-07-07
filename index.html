@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    const correctPassword = "bert";
+    const userPassword = prompt("Enter password to view this site:");
+    if (userPassword != correctPassword) {
+      document.body.innerHTML = "<h1>Access denied</h1>";
+    }
+  </script>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Natasha & Noah's Wedding</title>
 
   <!-- Bootstrap CSS -->
@@ -15,6 +23,9 @@
     body {
       font-family: 'Open Sans', sans-serif;
     }
+    .navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
     h1, h2 {
       font-family: 'Playfair Display', serif;
     }
@@ -33,7 +44,6 @@
     .nav-link {
       font-weight: 600;
     }
-
     /* Header with background image */
     header {
       position: relative;
@@ -54,7 +64,6 @@
       font-size: 1.5rem;
       margin-top: 0.5rem;
     }
-    /* Optional: add a dark overlay for better text contrast */
     header::before {
       content: "";
       position: absolute;
@@ -66,6 +75,37 @@
       position: relative;
       z-index: 1;
     }
+
+    /* Make navbar always collapsed (always hamburger) */
+    nav.navbar {
+      /* remove expansion class */
+    }
+    .navbar-collapse {
+      display: none !important; /* hide by default */
+    }
+    .navbar-collapse.show {
+      display: block !important; /* show when toggled */
+    }
+    .navbar-nav {
+      flex-direction: column;
+    }
+
+    /* Dropdown arrow next to hamburger icon */
+    .navbar-toggler {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dropdown-arrow {
+      border: solid #000;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      margin-left: 4px;
+      margin-bottom: 2px;
+    }
   </style>
 </head>
 <body>
@@ -76,14 +116,21 @@
     <p>We're getting married! September 6, 2026</p>
   </header>
 
-  <!-- Navigation with Hamburger -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+  <!-- Navigation always hamburger -->
+  <nav class="navbar navbar-light bg-white border-bottom sticky-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">Natasha & Noah</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+      <button class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMenu"
+          aria-controls="navbarMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="#story">Our Story</a></li>
           <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
@@ -150,7 +197,7 @@
     <small>© 2026 Natasha & Noah. All rights reserved.</small>
   </footer>
 
-  <!-- Bootstrap JS (required for hamburger toggle) -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
